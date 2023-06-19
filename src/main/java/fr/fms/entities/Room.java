@@ -7,6 +7,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor @ToString
 public class Room implements Serializable {
@@ -20,4 +22,7 @@ public class Room implements Serializable {
 
     @ManyToOne
     private Cinema cinema;
+
+    @OneToMany(mappedBy = "room")
+    private Collection<CinemaStreeming> cinemaStreemings;
 }

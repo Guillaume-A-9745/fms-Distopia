@@ -5,11 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor @ToString
@@ -22,8 +20,11 @@ public class Movie implements Serializable {
     private String name;
     private String director;
     private String actor;
+    @Lob
     private String synopsis;
     private int duration;
     private Date date;
 
+    @OneToMany(mappedBy = "movie")
+    private Collection<CinemaStreeming> cinemaStreemings;
 }

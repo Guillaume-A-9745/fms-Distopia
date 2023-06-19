@@ -18,5 +18,5 @@ public class OrderItem {
     private CinemaStreeming cinemaStreeming;
 
     @ManyToOne
-    private Orders order;
+    private Order order;
 }

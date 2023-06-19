@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor @ToString
-public class Orders {
+@Entity @Table(name="orders") @Data @NoArgsConstructor @AllArgsConstructor @ToString
+public class Order {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date;
