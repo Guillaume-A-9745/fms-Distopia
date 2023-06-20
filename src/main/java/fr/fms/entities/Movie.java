@@ -20,10 +20,10 @@ public class Movie implements Serializable {
     private String name;
     private String director;
     private String actor;
-    @Lob
     private String synopsis;
     private int duration;
-    private Date date;
+    private Date date = new Date();
+    //private String picture;
 
     @OneToMany(mappedBy = "movie")
     private Collection<CinemaStreeming> cinemaStreemings;
