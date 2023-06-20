@@ -39,9 +39,23 @@ public class MoviesController {
         model.addAttribute("movie", new Movie());
         return "addMovie";
     }
+
     @PostMapping("/save")
     public String save(Model model, Movie movie) {
         iBusiness.saveMovie(movie);
         return "redirect:/index";
+    }
+
+    @GetMapping("/edit")
+    public String edit(Long id, Model model) {
+        Movie movie = iBusiness.getMovieById(id);
+        model.addAttribute("movie", movie);
+        return "editMovie";
+    }
+
+    @GetMapping("/delete")
+    public String delete(Long id, int page, String keyword) {
+        iBusiness.deleteArticle(id);
+        return "redirect:/index?page="+page+"&keyword="+keyword;
     }
 }

@@ -205,6 +205,11 @@ public class DistopiaApplication implements CommandLineRunner {
 		Room roomAurores3 = roomRepository.save(new Room(null, "Aurores 3", 100, aurores,null));
 
 		Movie theFlash = movieRepository.save(new Movie((Long) null,"The Flash","Andy Muschietti", "Ezra Miller, Sasha Calle, Michael Shannon","Les réalités s’affrontent dans THE FLASH lorsque Barry se sert de ses super-pouvoirs pour remonter le temps et modifier son passé.",144,new Date(), null));
+		Movie spiderman = movieRepository.save(new Movie((Long) null,"SPIDER-MAN : ACROSS THE SPIDER-VERSE","Phil Lord, Christopher Miller", "Stéphane Bak, Shameik Moore, Shirine Boutella","Après avoir retrouvé Gwen Stacy, Spider-Man, le sympathique héros originaire de Brooklyn, est catapulté à travers le Multivers, où il rencontre une équipe de Spider-Héros chargée d'en protéger l'existence.",141,new Date(), null));
+		Movie transformers = movieRepository.save(new Movie((Long) null,"TRANSFORMERS: RISE OF THE BEASTS","Steven Caple Jr.", "Anthony Ramos, Dominique Fishback, Luna Lauren Velez","Transformers : Rise of the Beasts renoue avec l'action et le grand spectacle qui ont séduit des millions de spectateurs à travers le monde.",128,new Date(), null));
+		Movie sirene = movieRepository.save(new Movie((Long) null,"LA PETITE SIRÈNE","Rob Marshall", "Halle Bailey, Jonah Hauer-King, Melissa McCarthy","Les années 1830, dans les eaux d'une île fictive des Caraïbes. Ariel, la benjamine des filles du roi Triton, est une jeune sirène belle et fougueuse dotée d’un tempérament d’aventurière.",136,new Date(), null));
+		Movie fastfurious = movieRepository.save(new Movie((Long) null,"Fast & Furious X","Louis Leterrier", "Vin Diesel, Michelle Rodriguez, Jason Momoa","Dans FAST & FURIOUS 5, Dom et son équipe avaient fait tomber l’infâme ponte de la drogue brésilienne, Hernan Reyes.",141,new Date(), null));
+		Movie gardiens = movieRepository.save(new Movie((Long) null,"Les Gardiens de la Galaxie 3","James Gunn", "Chris Pratt, Zoe Saldana, Dave Bautista","Notre bande de marginaux favorite a quelque peu changé. Peter Quill, qui pleure toujours la perte de Gamora, doit rassembler son équipe pour défendre l’univers.",150,new Date(), null));
 
 		CinemaStreeming firstSession = cinemaStreemingRepository.save(new CinemaStreeming((Long) null,13.50,new Date(),1, roomAurores3,theFlash));
 

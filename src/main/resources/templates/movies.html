@@ -31,21 +31,34 @@
             <h1>Bienvenu sur Distopia</h1>
             <h2>Votre application de réservation en ligne</h2>
         </div>
-        <div class="container" th:each="movie:${listMovie}">
-            <div class="card">
-                <div class="d-flex flex-row">
-                    <div class="col-md-3">
-                        <a th:href="@{/detail (id=${movie.id}) }"><img alt="Coming-soon" src="../static/img/soon.jpg" th:src="@{img/soon.jpg}" class="card-img-top"></a>
-                    </div>
-                    <div class="col-md-9 card-body">
-                        <h5 th:text="${movie.name}"></h5>
-                        <p>Durée : <span th:text="${movie.duration}"></span> min</p>
-                        <p>Réalisateur :  <span th:text="${movie.director}"></span></p>
-                        <p>Acteur principaux : <span th:text="${movie.actor}"></span></p>
-                        <p>Résumé :  <span th:text="${movie.synopsis}"></span></p>
-                        <div class="text-end">
-                            <button type="submit" >Réserver une séance</button>
+        <div class="container-lg">
+            <div class="container-md" th:each="movie:${listMovie}">
+                <div class="card">
+                    <div class="d-flex flex-row">
+                        <div class="col-md-3">
+                            <a th:href="@{/detail (id=${movie.id}) }"><img alt="Coming-soon" src="../static/img/soon.jpg" th:src="@{img/soon.jpg}" class="card-img-top"></a>
                         </div>
+                        <div class="col-md-9 card-body">
+                            <h5 th:text="${movie.name}"></h5>
+                            <p>Durée : <span th:text="${movie.duration}"></span> min</p>
+                            <p>Réalisateur :  <span th:text="${movie.director}"></span></p>
+                            <p>Acteur principaux : <span th:text="${movie.actor}"></span></p>
+                            <p>Résumé :  <span th:text="${movie.synopsis}"></span></p>
+                            <div class="d-flex justify-content-around">
+                                <a class="btn btn-info" th:href="@{/edit(id=${movie.id}) }" >Modifier</a>
+                                <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/delete(id=${movie.id}, page=${currentPage}, keyword=${keyword})}">Delete</a>
+                                <button type="submit" >Réserver une séance</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div><div class="container">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div th:each="page, status : ${pages}"
+                         th:class="${currentPage == status.index ? 'btn-group active' : 'btn-group'}" role="group"
+                         aria-label="First group">
+                        <a th:href="@{/index(page=${status.index}, keyword=${keyword})}"
+                           class="btn btn-info" th:text="${status.index}"></a>
                     </div>
                 </div>
             </div>

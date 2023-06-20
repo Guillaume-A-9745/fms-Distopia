@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de cinéma</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class=""container-lg>
+            <div class="text-center">
+                <h1>Gestion des cinéma</h1>
+            </div>
+            <div>
+                <h3>Séléctionner la ville : </h3>
+                <div th:each="city:${listCity}" class="row">
+                    <div class="card col col-lg-6">
+                        <div class="d-flex justify-content-between">
+                            <h5 th:text="${city.name}"></h5>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

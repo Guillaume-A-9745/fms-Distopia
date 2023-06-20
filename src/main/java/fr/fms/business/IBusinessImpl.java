@@ -1,12 +1,14 @@
 package fr.fms.business;
 
 import fr.fms.dao.*;
+import fr.fms.entities.City;
 import fr.fms.entities.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,5 +38,16 @@ public class IBusinessImpl implements IBusiness{
     @Override
     public void saveMovie(Movie movie) {
         movieRepository.save(movie);
+    }
+
+    @Override
+    public void deleteArticle(Long id) {
+        movieRepository.deleteById(id);
+    }
+
+    @Override
+    public List findAll() {
+        List<City> cities = cityRepository.findAll();
+        return cities;
     }
 }

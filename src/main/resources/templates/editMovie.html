@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Modification des données d'un film</title>
 </head>
 <body>
-
+    <div layout:fragment="content">
+        <div class="container">
+            <div class="text-center"><h1>Mettre à jour un film :</h1></div>
+            <div>
+                <form th:action="@{/save}" method="post">
+                    <div class="form-group">
+                        <label class="control-label"> Nom du film : </label><label th:text=${movie.name}></label>
+                        <input class="form-control" type="text" name="name" th:value="${movie.name}">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Durée en minute : </label><label th:text=${movie.duration}></label>
+                        <input class="form-control" type="text" name="duration" th:value="${movie.duration}">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Réalisateur : </label><label th:text=${movie.director}></label>
+                        <input class="form-control" type="text" name="director" th:value="${movie.director}">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Acteur : </label><label th:text=${movie.actor}></label>
+                        <input class="form-control" type="text" name="actor" th:value="${movie.actor}">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Résumé : </label><label th:text=${movie.synopsis}></label>
+                        <input class="form-control" type="text" name="synopsis" th:value="${movie.synopsis}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
