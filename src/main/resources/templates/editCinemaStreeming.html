@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modification des données d'une séance</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="text-center"><h1>Mettre à jour une séance :</h1></div>
+        <div>
+            <form th:action="@{/saveCinemaStreeming}" method="post">
+                <div class="form-group">
+                    <label class="control-label"> Nom du film : </label>
+                    <select class="form-control" name="movie" th:value="${cinemaStreeming.movie}">
+                        <option
+                                th:each="movie : ${movies}"
+                                th:text="${movie.name}"
+                                th:selected="${cinemaStreeming.movie.id==movie.id}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> Durée en minute : </label><label th:text=${cinemaStreeming.timetable}></label>
+                    <input class="form-control" type="text" name="timetable" th:value="${cinemaStreeming.timetable}">
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> Réalisateur : </label><label th:text=${cinemaStreeming.price}></label>
+                    <input class="form-control" type="number" name="price" th:value="${cinemaStreeming.price}">
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> Acteur : </label><label th:text=${cinemaStreeming.date}></label>
+                    <input class="form-control" type="date" name="date" th:value="${cinemaStreeming.date}">
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

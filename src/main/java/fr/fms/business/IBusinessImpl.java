@@ -1,8 +1,7 @@
 package fr.fms.business;
 
 import fr.fms.dao.*;
-import fr.fms.entities.City;
-import fr.fms.entities.Movie;
+import fr.fms.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -49,5 +48,23 @@ public class IBusinessImpl implements IBusiness{
     public List findAll() {
         List<City> cities = cityRepository.findAll();
         return cities;
+    }
+
+    @Override
+    public List<Cinema> findAllContainsCityId(Long id) {
+        List<Cinema> cinemas = cinemaRepository.findCityIdContains(id);
+        return cinemas;
+    }
+
+    @Override
+    public List<Room> findAllContainsCinemaId(Long id) {
+        List<Room> rooms = roomRepository.findCinemaIdContains(id);
+        return rooms;
+    }
+
+    @Override
+    public List<CinemaStreeming> findAllContainsRoomId(Long id) {
+        List<CinemaStreeming> cinemaStreemings = cinemaStreemingRepository.findRoomIdContains(id);
+        return cinemaStreemings;
     }
 }

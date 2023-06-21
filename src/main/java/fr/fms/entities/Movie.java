@@ -24,6 +24,7 @@ public class Movie implements Serializable {
     private int duration;
     private Date date = new Date();
     //private String picture;
+    //private boolean display;
 
     @OneToMany(mappedBy = "movie")
     private Collection<CinemaStreeming> cinemaStreemings;

@@ -1,7 +1,6 @@
 package fr.fms.business;
 
-import fr.fms.entities.City;
-import fr.fms.entities.Movie;
+import fr.fms.entities.*;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +17,10 @@ public interface IBusiness {
     void deleteArticle(Long id);
 
     List findAll();
+
+    List<Cinema> findAllContainsCityId(Long id);
+
+    List<Room> findAllContainsCinemaId(Long id);
+
+    List<CinemaStreeming> findAllContainsRoomId(Long id);
 }

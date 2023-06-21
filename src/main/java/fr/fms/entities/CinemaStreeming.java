@@ -7,9 +7,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor @ToString
 public class CinemaStreeming implements Serializable {
@@ -17,9 +16,10 @@ public class CinemaStreeming implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String timetable;
     private double price;
-    private Date date;
+
+    private LocalDate date;
     private int quantity = 1;
 
     @ManyToOne
@@ -27,5 +27,10 @@ public class CinemaStreeming implements Serializable {
 
     @ManyToOne
     private Movie movie  ;
+
+    public String formattedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+        return date.format(formatter);
+    }
 
 }

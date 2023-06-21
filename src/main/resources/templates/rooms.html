@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion par salle</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container-lg">
+            <div class="text-center py-3">
+                <h1>Gestion des salles par cinéma</h1>
+            </div>
+            <div>
+                <h3>Séléctionner une salle : </h3>
+                <div class="row justify-content-center">
+                    <div th:each="room:${listRoom}" class="card col col-lg-5 p-0 m-1">
+                        <a class="btn" th:href="@{/cinemaStreeming(idRoom=${room.id}) }">
+                            <div class="d-flex justify-content-between">
+                                <div class="col col-lg-8 m-0">
+                                    <h5 th:text="${room.name}"></h5>
+                                    <p><span th:text="${room.places}"></span> places</p>
+                                </div>
+                                <div class="col col-lg-4 m-0 d-flex justify-content-center align-items-center">
+                                    <p class="m-0"><i class="fas fa-arrow-right"></i></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
