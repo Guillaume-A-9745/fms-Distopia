@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -45,5 +48,26 @@ public class CinemaController {
         model.addAttribute("movies", iBusiness.getMovies());
         model.addAttribute("cinemaStreeming", cinemaStreeming);
         return "editCinemaStreeming";
+    }
+    @PostMapping("/saveCinemaStreeming")
+    public String saveCinemaStreeming(CinemaStreeming cinemaStreeming) {
+        iBusiness.saveCinemaStreeming(cinemaStreeming);
+        return "redirect:/index";
+    }
+
+    @GetMapping("/addCity")
+    public String addCity(Model model) {
+        model.addAttribute("city",new Movie());
+        return "addCity";
+    }
+    @PostMapping("/saveCity")
+    public String saveCity(City city) {
+        iBusiness.saveCity(city);
+        return "redirect:/management";
+    }
+    @GetMapping("/deleteCity")
+    public String deleteCity(Long id) {
+        iBusiness.getDeleteCity(id);
+        return "redirect:/management";
     }
 }

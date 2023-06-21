@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th        = "http://thymeleaf.org"
       xmlns:layout    = "http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec	   ="http://www.thymeleaf.org/extras/spring-security5"
       layout:decorate = "~{layout}"
       lang="fr">
 <head>
@@ -45,8 +46,8 @@
                             <p>Acteur principaux : <span th:text="${movie.actor}"></span></p>
                             <p>Résumé :  <span th:text="${movie.synopsis}"></span></p>
                             <div class="d-flex justify-content-around">
-                                <a class="btn btn-info" th:href="@{/edit(id=${movie.id}) }" >Modifier</a>
-                                <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/delete(id=${movie.id}, page=${currentPage}, keyword=${keyword})}">Delete</a>
+                                <a class="btn btn-info" th:href="@{/edit(id=${movie.id}) }" sec:authorize="hasRole('ROLE_ADMIN')">Modifier</a>
+                                <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/delete(id=${movie.id}, page=${currentPage}, keyword=${keyword})}"  sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</a>
                                 <button type="submit" >Réserver une séance</button>
                             </div>
                         </div>

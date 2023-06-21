@@ -74,7 +74,20 @@ public class IBusinessImpl implements IBusiness{
         return cinemaStreeming.isPresent() ? cinemaStreeming.get() : null;
     }
 
+    @Override
+    public void saveCinemaStreeming(CinemaStreeming cinemaStreeming) {
+        cinemaStreemingRepository.save(cinemaStreeming);
+    }
+
     public List<Movie> getMovies() {
         return movieRepository.findAll();
+    }
+
+    public void saveCity(City city) {
+        cityRepository.save(city);
+    }
+
+    public void getDeleteCity(Long id) {
+        cityRepository.deleteById(id);
     }
 }

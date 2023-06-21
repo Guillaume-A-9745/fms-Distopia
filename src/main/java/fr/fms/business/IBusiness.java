@@ -26,4 +26,5 @@ public interface IBusiness {
 
     CinemaStreeming getCinemaStreemingById(Long id);
 
+    void saveCinemaStreeming(CinemaStreeming cinemaStreeming);
 }
