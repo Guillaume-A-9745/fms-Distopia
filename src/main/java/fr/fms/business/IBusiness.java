@@ -23,4 +23,7 @@ public interface IBusiness {
     List<Room> findAllContainsCinemaId(Long id);
 
     List<CinemaStreeming> findAllContainsRoomId(Long id);
+
+    CinemaStreeming getCinemaStreemingById(Long id);
+
 }

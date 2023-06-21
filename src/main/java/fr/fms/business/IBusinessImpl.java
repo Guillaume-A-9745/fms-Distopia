@@ -67,4 +67,14 @@ public class IBusinessImpl implements IBusiness{
         List<CinemaStreeming> cinemaStreemings = cinemaStreemingRepository.findRoomIdContains(id);
         return cinemaStreemings;
     }
+
+    @Override
+    public CinemaStreeming getCinemaStreemingById(Long id) {
+        Optional<CinemaStreeming> cinemaStreeming = cinemaStreemingRepository.findById(id);
+        return cinemaStreeming.isPresent() ? cinemaStreeming.get() : null;
+    }
+
+    public List<Movie> getMovies() {
+        return movieRepository.findAll();
+    }
 }

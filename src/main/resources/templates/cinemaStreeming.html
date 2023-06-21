@@ -17,7 +17,7 @@
                 <h3>Séléctionner une séance : </h3>
                 <div class="row justify-content-center">
                     <div th:each="cinemaStreeming:${listCinemaStreeming}" class="card col col-lg-8 p-0 m-1">
-                        <a class="btn" th:href="@{/editCinemaStreeming(idCinemaStreeming=${cinemaStreeming.id}) }">
+                        <a class="btn" th:href="@{/editCinemaStreeming(id=${cinemaStreeming.id}) }">
                             <div class="d-flex justify-content-between">
                                 <div class="col col-lg-8 m-0">
                                     <h5>Séance : <span th:text="${cinemaStreeming.timetable}"></span> du <span th:text="${cinemaStreeming.formattedDate()}"></span></h5>

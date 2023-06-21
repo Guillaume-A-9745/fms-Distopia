@@ -37,7 +37,13 @@ public class CinemaController {
     public String cinemaStreeming(Model model, @RequestParam(name="idRoom" , defaultValue = "") Long id) {
         List<CinemaStreeming> cinemaStreemings = iBusiness.findAllContainsRoomId(id);
         model.addAttribute("listCinemaStreeming", cinemaStreemings);
-
         return  "cinemaStreeming";
+    }
+    @GetMapping("/editCinemaStreeming")
+    public String editCinemaStreeming(Model model, Long id) {
+        CinemaStreeming cinemaStreeming = iBusiness.getCinemaStreemingById(id);
+        model.addAttribute("movies", iBusiness.getMovies());
+        model.addAttribute("cinemaStreeming", cinemaStreeming);
+        return "editCinemaStreeming";
     }
 }
