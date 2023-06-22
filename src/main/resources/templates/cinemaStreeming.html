@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec	   ="http://www.thymeleaf.org/extras/spring-security5"
       layout:decorate="~{layout}"
       lang="fr">
 <head>
@@ -17,18 +18,17 @@
                 <h3>Séléctionner une séance : </h3>
                 <div class="row justify-content-center">
                     <div th:each="cinemaStreeming:${listCinemaStreeming}" class="card col col-lg-8 p-0 m-1">
-                        <a class="btn" th:href="@{/editCinemaStreeming(id=${cinemaStreeming.id}) }">
+
                             <div class="d-flex justify-content-between">
                                 <div class="col col-lg-8 m-0">
                                     <h5>Séance : <span th:text="${cinemaStreeming.timetable}"></span> du <span th:text="${cinemaStreeming.formattedDate()}"></span></h5>
                                     <p><span th:text="${cinemaStreeming.price}"></span> €</p>
-                                    <button type="submit">Modifier la séance</button>
-                                </div>
-                                <div class="col col-lg-4 m-0 d-flex justify-content-center align-items-center">
-                                    <p class="m-0"><i class="fas fa-arrow-right"></i></p>
+                                    <a class="btn btn-info" th:href="@{/editCinemaStreeming(id=${cinemaStreeming.id}) }" sec:authorize="hasRole('ROLE_ADMIN')">Modifier la séance</a>
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/deleteCinemaStreeming(id=${cinemaStreeming.id})}"  sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</a>
+                                    <button type="submit" >Réserver une séance</button>
                                 </div>
                             </div>
-                        </a>
+
                     </div>
                 </div>
             </div>

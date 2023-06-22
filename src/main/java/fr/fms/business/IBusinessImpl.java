@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +23,34 @@ public class IBusinessImpl implements IBusiness{
     CinemaStreemingRepository cinemaStreemingRepository;
     @Autowired
     MovieRepository movieRepository;
+
+    private HashMap<Long,CinemaStreeming> cart;
+    private Customer customer;
+
+    @Override
+    public void addCinemaStreemingToCard(CinemaStreeming cinemaStreeming) {
+
+    }
+
+    @Override
+    public void removeCinemaStreemingToCard(Long id) {
+
+    }
+
+    @Override
+    public void deleteCart() {
+
+    }
+
+    @Override
+    public List<CinemaStreeming> getInCart() {
+        return null;
+    }
+
+    @Override
+    public int getNbInCart() {
+        return 0;
+    }
 
     @Override
     public Page<Movie> getMoviesPages(String kw, int page) {
@@ -40,12 +69,12 @@ public class IBusinessImpl implements IBusiness{
     }
 
     @Override
-    public void deleteArticle(Long id) {
+    public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
     }
 
     @Override
-    public List findAll() {
+    public List<City> findAll() {
         List<City> cities = cityRepository.findAll();
         return cities;
     }
@@ -94,5 +123,9 @@ public class IBusinessImpl implements IBusiness{
     public City getCityById(Long id) {
         Optional<City> city = cityRepository.findById(id);
         return city.isPresent() ? city.get() : null;
+    }
+
+    public void getDeleteCinemaStreeming(Long id) {
+        cinemaStreemingRepository.deleteById(id);
     }
 }
