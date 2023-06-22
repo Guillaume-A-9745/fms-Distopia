@@ -15,7 +15,7 @@ public interface IBusiness {
     void addCinemaStreemingToCard(CinemaStreeming cinemaStreeming);
 
     /**
-     * Métode qui retire une séance du panier
+     * Méthode qui retire une séance du panier
      * @param id  id de l'article à retirer
      */
     void removeCinemaStreemingToCard(Long id);
@@ -29,7 +29,7 @@ public interface IBusiness {
      * Méthode qui retourne le contenu du panier
      * @return une liste de séance
      */
-    List<CinemaStreeming> getInCart();
+    List<CinemaStreeming> getCart();
 
     /**
      * Méthode qui retourne le nombre de séance dans le panier
@@ -103,4 +103,6 @@ public interface IBusiness {
      * @param cinemaStreeming
      */
     void saveCinemaStreeming(CinemaStreeming cinemaStreeming);
+
+
 }

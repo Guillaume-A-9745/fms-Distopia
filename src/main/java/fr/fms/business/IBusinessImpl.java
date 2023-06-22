@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -27,29 +28,39 @@ public class IBusinessImpl implements IBusiness{
     private HashMap<Long,CinemaStreeming> cart;
     private Customer customer;
 
+    public IBusinessImpl() {
+        cart = new HashMap<>();
+        customer = null;
+    }
+
     @Override
     public void addCinemaStreemingToCard(CinemaStreeming cinemaStreeming) {
-
+        CinemaStreeming c = cart.get(cinemaStreeming.getId());
+        if(c != null) {
+            c.setQuantity(c.getQuantity() + 1);
+        } else {
+            cart.put(cinemaStreeming.getId(), cinemaStreeming);
+        }
     }
 
     @Override
-    public void removeCinemaStreemingToCard(Long id) {
-
-    }
+    public void removeCinemaStreemingToCard(Long id) { cart.remove(id); }
 
     @Override
-    public void deleteCart() {
-
-    }
+    public void deleteCart() { cart.clear(); }
 
     @Override
-    public List<CinemaStreeming> getInCart() {
-        return null;
+    public List<CinemaStreeming> getCart() {
+        return new ArrayList<>(cart.values());
     }
 
     @Override
     public int getNbInCart() {
-        return 0;
+        return cart.size();
+    }
+
+    public boolean isEmpty() {
+        return cart.isEmpty();
     }
 
     @Override
@@ -128,4 +139,12 @@ public class IBusinessImpl implements IBusiness{
     public void getDeleteCinemaStreeming(Long id) {
         cinemaStreemingRepository.deleteById(id);
     }
+
+    public double getTotalAmount(){
+        double total = 0;
+        for(CinemaStreeming article : cart.values()) {
+            total += article.getPrice()*article.getQuantity();
+        }
+        return total;
+    };
 }

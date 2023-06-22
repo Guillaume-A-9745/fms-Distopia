@@ -18,17 +18,17 @@
                 <h3>Séléctionner une séance : </h3>
                 <div class="row justify-content-center">
                     <div th:each="cinemaStreeming:${listCinemaStreeming}" class="card col col-lg-8 p-0 m-1">
-
                             <div class="d-flex justify-content-between">
-                                <div class="col col-lg-8 m-0">
+                                <div class="col m-0 text-center">
                                     <h5>Séance : <span th:text="${cinemaStreeming.timetable}"></span> du <span th:text="${cinemaStreeming.formattedDate()}"></span></h5>
                                     <p><span th:text="${cinemaStreeming.price}"></span> €</p>
-                                    <a class="btn btn-info" th:href="@{/editCinemaStreeming(id=${cinemaStreeming.id}) }" sec:authorize="hasRole('ROLE_ADMIN')">Modifier la séance</a>
-                                    <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/deleteCinemaStreeming(id=${cinemaStreeming.id})}"  sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</a>
-                                    <button type="submit" >Réserver une séance</button>
+                                    <div class="d-flex justify-content-around">
+                                        <a class="btn btn-info" th:href="@{/editCinemaStreeming(id=${cinemaStreeming.id}) }" sec:authorize="hasRole('ROLE_ADMIN')">Modifier la séance</a>
+                                        <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/deleteCinemaStreeming(id=${cinemaStreeming.id})}"  sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</a>
+                                        <a class="btn btn-secondary" th:href="@{/addToCart(id=${cinemaStreeming.id})}">Réserver une séance</a>
+                                    </div>
                                 </div>
                             </div>
-
                     </div>
                 </div>
             </div>
