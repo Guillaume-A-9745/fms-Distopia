@@ -14,6 +14,9 @@
             <div>
                 <form th:action="@{/save}" method="post">
                     <div class="form-group">
+                        <input class="form-control" type="hidden" name="id" th:value="${movie.id}">
+                    </div>
+                    <div class="form-group">
                         <label class="control-label"> Nom du film : </label><label th:text=${movie.name}></label>
                         <input class="form-control" type="text" name="name" th:value="${movie.name}">
                     </div>

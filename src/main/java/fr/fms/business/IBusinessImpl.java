@@ -90,4 +90,9 @@ public class IBusinessImpl implements IBusiness{
     public void getDeleteCity(Long id) {
         cityRepository.deleteById(id);
     }
+
+    public City getCityById(Long id) {
+        Optional<City> city = cityRepository.findById(id);
+        return city.isPresent() ? city.get() : null;
+    }
 }

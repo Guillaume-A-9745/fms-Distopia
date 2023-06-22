@@ -70,4 +70,10 @@ public class CinemaController {
         iBusiness.getDeleteCity(id);
         return "redirect:/management";
     }
+    @GetMapping("/editCity")
+    public String editCity(Long id, Model model) {
+        City city = iBusiness.getCityById(id);
+        model.addAttribute("city", city);
+        return "editCity";
+    }
 }
