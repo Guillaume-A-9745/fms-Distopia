@@ -194,8 +194,20 @@ public class CinemaController {
     @GetMapping("/cinemaStreeming")
     public String cinemaStreeming(Model model, @RequestParam(name="idRoom" , defaultValue = "") Long id) {
         List<CinemaStreeming> cinemaStreemings = iBusiness.findAllContainsRoomId(id);
+        List<Movie> movies;
         model.addAttribute("listCinemaStreeming", cinemaStreemings);
+        model.addAttribute("idRoom",id);
         return  "cinemaStreeming";
+    }
+
+    /**
+     * Méthode qui permet l'accès à la page d'ajout d'une séance
+     * @return
+     */
+    @GetMapping("/addcinemaStreeming")
+    public String addcinemaStreeming(){
+        //TODO
+        return null;
     }
 
     /**

@@ -1,58 +1,48 @@
 package fr.fms;
 
 import fr.fms.business.IBusinessImpl;
-import fr.fms.dao.*;
-import fr.fms.entities.City;
-import fr.fms.entities.Movie;
+import fr.fms.entities.CinemaStreeming;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @SpringBootTest
 class DistopiaApplicationTests {
 	@Autowired
-	CityRepository cityRepository;
-	@Autowired
-	CinemaRepository cinemaRepository;
-	@Autowired
-	RoomRepository roomRepository;
-	@Autowired
-	MovieRepository movieRepository;
-	@Autowired
-	CinemaStreemingRepository cinemaStreemingRepository;
-
-	@Autowired
 	IBusinessImpl iBusiness;
 
 	@Test
-	void contextLoads() {}
+	void testTotalAmontCart() {
+		// Arrange
+		iBusiness.addCinemaStreemingToCard(new CinemaStreeming((long)1,"10h",10, LocalDate.of(2023,06,23),1,null,null));
+		iBusiness.addCinemaStreemingToCard(new CinemaStreeming((long)2,"11h",10,LocalDate.of(2023,06,23),1,null,null));
+		iBusiness.addCinemaStreemingToCard(new CinemaStreeming((long)3,"12h",10,LocalDate.of(2023,06,23),1,null,null));
 
-	@Test
-	void test_add_movie() {
-		//GIVEN
-		Movie elementaire = movieRepository.save(new Movie(null,"Élémentaire","Peter Sohn","Leah Lewis, Mamoudou Athie, Ronnie Del Carmen","Dans la ville d’Element City, le feu, l’eau, la terre et l’air vivent dans la plus parfaite harmonie.",102,new Date(),null));
+		// Act
+		double amount = iBusiness.getTotalAmount();
 
-		//WHEN
-		Movie movie = movieRepository.findByNameContains("Élémentaire");
-
-		//THEN
-		assertEquals("Peter Sohn", movie.getDirector());
+		// Assert
+		assertEquals(amount,30);
 	}
 
 	@Test
-	void test_add_city() {
+	void changeQuantityWhenAddSameCinemaStreemingToCart() {
 		//GIVEN
-		City Nice = cityRepository.save(new City(null,"Nice",null));
+		iBusiness.deleteCart();
+		CinemaStreeming cinemaStreeming = new CinemaStreeming((long)1,"10h",10, LocalDate.of(2023,06,23),1,null,null);
 
 		//WHEN
-		Iterable<City> cities = cityRepository.findAll();
+		iBusiness.addCinemaStreemingToCard(cinemaStreeming);
+		iBusiness.addCinemaStreemingToCard(cinemaStreeming);
+		iBusiness.addCinemaStreemingToCard(cinemaStreeming);
 
 		//THEN
-		assertThat(cities).isNotEmpty();
+		System.out.println("-------------->" + iBusiness.getNbInCart());
+		assertEquals(iBusiness.getNbInCart(),1);
 	}
 }

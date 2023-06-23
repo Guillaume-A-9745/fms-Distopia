@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MoviesController {
@@ -25,12 +23,14 @@ public class MoviesController {
     @GetMapping("/index")
     public String index(Model model,
                         @RequestParam(name="page" , defaultValue = "0") int page,
-                        @RequestParam(name="keyword" , defaultValue = "") String kw) {
+                        @RequestParam(name="keyword" , defaultValue = "") String kw,
+                        @RequestParam(name="nbcart" , defaultValue = "0") int cart) {
         Page<Movie> movies = iBusiness.getMoviesPages(kw,page);
         model.addAttribute("listMovie",movies.getContent());
         model.addAttribute("pages", new int[movies.getTotalPages()]);
         model.addAttribute("currentPage", page);
         model.addAttribute("keyword", kw);
+        model.addAttribute("nbcart", iBusiness.getNbInCart());
         return "movies";
     }
 
@@ -94,5 +94,11 @@ public class MoviesController {
     public String delete(Long id, int page, String keyword) {
         iBusiness.deleteMovie(id);
         return "redirect:/index?page="+page+"&keyword="+keyword;
+    }
+
+    @RequestMapping("/greating")
+    public @ResponseBody
+    String greating() {
+        return iBusiness.great();
     }
 }

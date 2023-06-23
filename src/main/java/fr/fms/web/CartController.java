@@ -21,9 +21,9 @@ public class CartController {
     }
 
     @GetMapping("/addToCart")
-    public String addToCart(Long id) {
+    public String addToCart(Long id,Long idRoom) {
         iBusiness.addCinemaStreemingToCard(iBusiness.getCinemaStreemingById(id));
-        return "redirect:/index";
+        return "redirect:/cinemaStreeming?idRoom=" + idRoom;
     }
 
     @GetMapping("/removeToCart")

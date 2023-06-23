@@ -147,4 +147,6 @@ public class IBusinessImpl implements IBusiness{
         }
         return total;
     };
+
+    public String great() { return "Hello World"; }
 }

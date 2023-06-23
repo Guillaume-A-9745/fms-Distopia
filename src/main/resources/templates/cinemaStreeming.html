@@ -25,7 +25,7 @@
                                     <div class="d-flex justify-content-around">
                                         <a class="btn btn-info" th:href="@{/editCinemaStreeming(id=${cinemaStreeming.id}) }" sec:authorize="hasRole('ROLE_ADMIN')">Modifier la séance</a>
                                         <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/deleteCinemaStreeming(id=${cinemaStreeming.id})}"  sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</a>
-                                        <a class="btn btn-secondary" th:href="@{/addToCart(id=${cinemaStreeming.id})}">Réserver une séance</a>
+                                        <a class="btn btn-secondary" th:href="@{/addToCart(id=${cinemaStreeming.id}, idRoom=${idRoom})}">Réserver une séance</a>
                                     </div>
                                 </div>
                             </div>

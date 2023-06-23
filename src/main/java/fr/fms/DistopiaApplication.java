@@ -216,7 +216,28 @@ public class DistopiaApplication implements CommandLineRunner {
 		Movie fastfurious = movieRepository.save(new Movie((Long) null,"Fast & Furious X","Louis Leterrier", "Vin Diesel, Michelle Rodriguez, Jason Momoa","Dans FAST & FURIOUS 5, Dom et son équipe avaient fait tomber l’infâme ponte de la drogue brésilienne, Hernan Reyes.",141,new Date(), null));
 		Movie gardiens = movieRepository.save(new Movie((Long) null,"Les Gardiens de la Galaxie 3","James Gunn", "Chris Pratt, Zoe Saldana, Dave Bautista","Notre bande de marginaux favorite a quelque peu changé. Peter Quill, qui pleure toujours la perte de Gamora, doit rassembler son équipe pour défendre l’univers.",150,new Date(), null));
 
-		CinemaStreeming firstSession = cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"matin",13.50, LocalDate.of(2023,06,25),1, roomAurores3,theFlash));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"11h",9.20, LocalDate.of(2023,06,23),1, roomAurores1,transformers));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"14h30",12.50, LocalDate.of(2023,06,23),1, roomAurores1,transformers));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"18h",12.50, LocalDate.of(2023,06,23),1, roomAurores1,transformers));
 
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"11h",9.20, LocalDate.of(2023,06,23),1, roomAurores2,spiderman));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"14h30",12.50, LocalDate.of(2023,06,23),1, roomAurores2,spiderman));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"18h",12.50, LocalDate.of(2023,06,23),1, roomAurores2,spiderman));
+
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"11h",9.20, LocalDate.of(2023,06,23),1, roomAurores3,theFlash));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"14h30",12.50, LocalDate.of(2023,06,23),1, roomAurores3,theFlash));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"18h",12.50, LocalDate.of(2023,06,23),1, roomAurores3,theFlash));
+
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"11h",9.20, LocalDate.of(2023,06,23),1, roomArc1,sirene));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"14h30",12.50, LocalDate.of(2023,06,23),1, roomArc1,sirene));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"18h",12.50, LocalDate.of(2023,06,23),1, roomArc1,sirene));
+
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"11h",9.20, LocalDate.of(2023,06,23),1, roomArc2,fastfurious));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"14h30",12.50, LocalDate.of(2023,06,23),1, roomArc2,fastfurious));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"18h",12.50, LocalDate.of(2023,06,23),1, roomArc2,fastfurious));
+
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"11h",9.20, LocalDate.of(2023,06,23),1, roomArc3,gardiens));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"14h30",12.50, LocalDate.of(2023,06,23),1, roomArc3,gardiens));
+		cinemaStreemingRepository.save(new CinemaStreeming((Long) null,"18h",12.50, LocalDate.of(2023,06,23),1, roomArc3,gardiens));
 	}
 }
