@@ -11,4 +11,5 @@ import java.util.List;
 public interface MovieRepository extends JpaRepository<Movie,Long> {
     List<Movie> findAll();
     Page<Movie> findByNameContains(String kw, PageRequest of);
+    Movie findByNameContains(String kw);
 }

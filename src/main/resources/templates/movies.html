@@ -34,7 +34,7 @@
         </div>
         <div class="container-lg">
             <div class="container-md" th:each="movie:${listMovie}">
-                <div class="card">
+                <div class="card p-2 m-1">
                     <div class="d-flex flex-row">
                         <div class="col-md-3">
                             <a th:href="@{/detail (id=${movie.id}) }"><img alt="Coming-soon" src="../static/img/soon.jpg" th:src="@{img/soon.jpg}" class="card-img-top"></a>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th     = "http://thymeleaf.org"
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec	   = "http://www.thymeleaf.org/extras/spring-security5"
+      layout:decorate="~{layout}"
+      lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Votre panier</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container-lg">
+            <div class="text-center py-3">
+                <h1>Votre panier</h1>
+            </div><br>
+            <div th:if="${nbArt>0}">
+                <div class="row justify-content-center">
+                    <div th:each="c:${cart}" class="card col col-lg-8 p-0 m-1">
+                        <div class="d-flex justify-content-between">
+                            <div class="col m-0 text-center">
+                                <h5>Séance de <span th:text="${c.timetable}"></span> le <span th:text="${c.formattedDate()}"></span></h5>
+                                <p>Nombre de place réserver : <span th:text="${c.quantity}"></span> au prix unitaire de <span th:text="${c.price}"></span> €</p>
+                                <div class="d-flex justify-content-around">
+                                    <a class="btn btn-danger" onclick="return confirm('Are you sure ?')" th:href="@{/removeToCart(id=${c.id})}">Retirer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-right"> <strong> Montant total :  <span th:text="${total}"></span> €</strong></p>
+                    <a class="btn btn-primary" th:href="@{/order}"> Commander</a>
+                </div>
+            </div>
+            <div th:if="${nbArt==0}"> PANIER VIDE </div>
+        </div>
+    </div>
+</body>
+</html>

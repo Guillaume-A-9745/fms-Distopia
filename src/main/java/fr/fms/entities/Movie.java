@@ -1,5 +1,6 @@
 package fr.fms.entities;
 
+import com.sun.media.sound.ModelInstrument;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,4 +29,5 @@ public class Movie implements Serializable {
 
     @OneToMany(mappedBy = "movie")
     private Collection<CinemaStreeming> cinemaStreemings;
+
 }
